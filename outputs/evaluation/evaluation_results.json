@@ -1,0 +1,2697 @@
+{
+  "summary": {
+    "total_questions": 20,
+    "correct_answers": 15,
+    "incorrect_answers": 0,
+    "partially_correct_answers": 0,
+    "correct_refusals": 5,
+    "not_evaluable": 0,
+    "accuracy_on_data_queries": 1.0,
+    "live_gemini_tests": 0,
+    "evaluation_scope": "SQLite query operations and deterministic unsupported-question guard; not live Gemini answer quality."
+  },
+  "results": [
+    {
+      "id": "E01",
+      "group": "cross-plan count",
+      "question": "How many floor plans are in the database?",
+      "operation": "list_floor_plans",
+      "arguments": {},
+      "expected": {
+        "floor_plan_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          120,
+          121
+        ]
+      },
+      "comparison": "floor_plan_ids",
+      "status": "passed",
+      "actual": {
+        "floor_plan_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          120,
+          121
+        ]
+      },
+      "sql": "SELECT image_id, image_filename, image_width, image_height, extraction_status, semantic_status FROM floor_plans ORDER BY image_id",
+      "parameters": [],
+      "returned_data": [
+        {
+          "image_id": 1,
+          "image_filename": "1.png",
+          "image_width": 1950,
+          "image_height": 1867,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 2,
+          "image_filename": "2.png",
+          "image_width": 1318,
+          "image_height": 1229,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 3,
+          "image_filename": "3.png",
+          "image_width": 1298,
+          "image_height": 1506,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 4,
+          "image_filename": "4.png",
+          "image_width": 1027,
+          "image_height": 1369,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 5,
+          "image_filename": "5.png",
+          "image_width": 1479,
+          "image_height": 1486,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 6,
+          "image_filename": "6.png",
+          "image_width": 2218,
+          "image_height": 2227,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 7,
+          "image_filename": "7.png",
+          "image_width": 1497,
+          "image_height": 1462,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 8,
+          "image_filename": "8.png",
+          "image_width": 1621,
+          "image_height": 1349,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 9,
+          "image_filename": "9.png",
+          "image_width": 1943,
+          "image_height": 1987,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 10,
+          "image_filename": "10.png",
+          "image_width": 3508,
+          "image_height": 2480,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 11,
+          "image_filename": "11.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 12,
+          "image_filename": "12.png",
+          "image_width": 3508,
+          "image_height": 2479,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 13,
+          "image_filename": "13.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 14,
+          "image_filename": "14.png",
+          "image_width": 2480,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 15,
+          "image_filename": "15.png",
+          "image_width": 2480,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 16,
+          "image_filename": "16.png",
+          "image_width": 2480,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 17,
+          "image_filename": "17.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 18,
+          "image_filename": "18.png",
+          "image_width": 3508,
+          "image_height": 2480,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 19,
+          "image_filename": "19.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 20,
+          "image_filename": "20.png",
+          "image_width": 3508,
+          "image_height": 2480,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 21,
+          "image_filename": "21.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 22,
+          "image_filename": "22.png",
+          "image_width": 2480,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 23,
+          "image_filename": "23.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 24,
+          "image_filename": "24.png",
+          "image_width": 3508,
+          "image_height": 2479,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 25,
+          "image_filename": "25.png",
+          "image_width": 3508,
+          "image_height": 2480,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 26,
+          "image_filename": "26.png",
+          "image_width": 3508,
+          "image_height": 2480,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 27,
+          "image_filename": "27.png",
+          "image_width": 2480,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 28,
+          "image_filename": "28.png",
+          "image_width": 2480,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 29,
+          "image_filename": "29.png",
+          "image_width": 3508,
+          "image_height": 2480,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 30,
+          "image_filename": "30.png",
+          "image_width": 3508,
+          "image_height": 2480,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 31,
+          "image_filename": "31.png",
+          "image_width": 3508,
+          "image_height": 2480,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 32,
+          "image_filename": "32.png",
+          "image_width": 2480,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 33,
+          "image_filename": "33.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 34,
+          "image_filename": "34.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 35,
+          "image_filename": "35.png",
+          "image_width": 2480,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 36,
+          "image_filename": "36.png",
+          "image_width": 3508,
+          "image_height": 2480,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 37,
+          "image_filename": "37.png",
+          "image_width": 3508,
+          "image_height": 2479,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 38,
+          "image_filename": "38.png",
+          "image_width": 2480,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 39,
+          "image_filename": "39.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 40,
+          "image_filename": "40.png",
+          "image_width": 3508,
+          "image_height": 2479,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 41,
+          "image_filename": "41.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 42,
+          "image_filename": "42.png",
+          "image_width": 2480,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 43,
+          "image_filename": "43.png",
+          "image_width": 2480,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 44,
+          "image_filename": "44.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 45,
+          "image_filename": "45.png",
+          "image_width": 3508,
+          "image_height": 2480,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 46,
+          "image_filename": "46.png",
+          "image_width": 3508,
+          "image_height": 2480,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 47,
+          "image_filename": "47.png",
+          "image_width": 3508,
+          "image_height": 2480,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 48,
+          "image_filename": "48.png",
+          "image_width": 2480,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 49,
+          "image_filename": "49.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 50,
+          "image_filename": "50.png",
+          "image_width": 3508,
+          "image_height": 2480,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 51,
+          "image_filename": "51.png",
+          "image_width": 3508,
+          "image_height": 2479,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 52,
+          "image_filename": "52.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 53,
+          "image_filename": "53.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 54,
+          "image_filename": "54.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 55,
+          "image_filename": "55.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 56,
+          "image_filename": "56.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 57,
+          "image_filename": "57.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 58,
+          "image_filename": "58.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 59,
+          "image_filename": "59.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 60,
+          "image_filename": "60.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 61,
+          "image_filename": "61.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 62,
+          "image_filename": "62.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 63,
+          "image_filename": "63.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 64,
+          "image_filename": "64.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 65,
+          "image_filename": "65.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 66,
+          "image_filename": "66.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 67,
+          "image_filename": "67.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 68,
+          "image_filename": "68.png",
+          "image_width": 2480,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 69,
+          "image_filename": "69.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 70,
+          "image_filename": "70.png",
+          "image_width": 2480,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 71,
+          "image_filename": "71.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 72,
+          "image_filename": "72.png",
+          "image_width": 3508,
+          "image_height": 2479,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 73,
+          "image_filename": "73.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 74,
+          "image_filename": "74.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 75,
+          "image_filename": "75.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 76,
+          "image_filename": "76.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 77,
+          "image_filename": "77.png",
+          "image_width": 2480,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 78,
+          "image_filename": "78.png",
+          "image_width": 3508,
+          "image_height": 2479,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 79,
+          "image_filename": "79.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 80,
+          "image_filename": "80.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 81,
+          "image_filename": "81.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 82,
+          "image_filename": "82.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 83,
+          "image_filename": "83.png",
+          "image_width": 2480,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 84,
+          "image_filename": "84.png",
+          "image_width": 2480,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 85,
+          "image_filename": "85.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 86,
+          "image_filename": "86.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 87,
+          "image_filename": "87.png",
+          "image_width": 3508,
+          "image_height": 2480,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 88,
+          "image_filename": "88.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 89,
+          "image_filename": "89.png",
+          "image_width": 2480,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 90,
+          "image_filename": "90.png",
+          "image_width": 2480,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 91,
+          "image_filename": "91.png",
+          "image_width": 3508,
+          "image_height": 2480,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 92,
+          "image_filename": "92.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 93,
+          "image_filename": "93.png",
+          "image_width": 3508,
+          "image_height": 2480,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 94,
+          "image_filename": "94.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 95,
+          "image_filename": "95.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 96,
+          "image_filename": "96.png",
+          "image_width": 2479,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 97,
+          "image_filename": "97.png",
+          "image_width": 2480,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 98,
+          "image_filename": "98.png",
+          "image_width": 2480,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 99,
+          "image_filename": "99.png",
+          "image_width": 2480,
+          "image_height": 3508,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 100,
+          "image_filename": "100.png",
+          "image_width": 5671,
+          "image_height": 7383,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 101,
+          "image_filename": "101.png",
+          "image_width": 5671,
+          "image_height": 7383,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 102,
+          "image_filename": "102.png",
+          "image_width": 5671,
+          "image_height": 7383,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 103,
+          "image_filename": "103.png",
+          "image_width": 5671,
+          "image_height": 7383,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 104,
+          "image_filename": "104.png",
+          "image_width": 5671,
+          "image_height": 7383,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 105,
+          "image_filename": "105.png",
+          "image_width": 5671,
+          "image_height": 7383,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 106,
+          "image_filename": "106.png",
+          "image_width": 5671,
+          "image_height": 7383,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 107,
+          "image_filename": "107.png",
+          "image_width": 5671,
+          "image_height": 7383,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 108,
+          "image_filename": "108.png",
+          "image_width": 5671,
+          "image_height": 7383,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 109,
+          "image_filename": "109.png",
+          "image_width": 5671,
+          "image_height": 7383,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 110,
+          "image_filename": "110.png",
+          "image_width": 5671,
+          "image_height": 7383,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 111,
+          "image_filename": "111.png",
+          "image_width": 5671,
+          "image_height": 7383,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 112,
+          "image_filename": "112.png",
+          "image_width": 5671,
+          "image_height": 7383,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 113,
+          "image_filename": "113.png",
+          "image_width": 5671,
+          "image_height": 7383,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 114,
+          "image_filename": "114.png",
+          "image_width": 5671,
+          "image_height": 7383,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 115,
+          "image_filename": "115.png",
+          "image_width": 5671,
+          "image_height": 7383,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 116,
+          "image_filename": "116.png",
+          "image_width": 5671,
+          "image_height": 7383,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 117,
+          "image_filename": "117.png",
+          "image_width": 5671,
+          "image_height": 7383,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 118,
+          "image_filename": "118.png",
+          "image_width": 2550,
+          "image_height": 3300,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 119,
+          "image_filename": "119.png",
+          "image_width": 2550,
+          "image_height": 3300,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 120,
+          "image_filename": "120.png",
+          "image_width": 2550,
+          "image_height": 3300,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        },
+        {
+          "image_id": 121,
+          "image_filename": "121.png",
+          "image_width": 2550,
+          "image_height": 3300,
+          "extraction_status": "candidate_extraction",
+          "semantic_status": "CANDIDATE"
+        }
+      ],
+      "uncertainty": null,
+      "live_gemini_tested": false
+    },
+    {
+      "id": "E02",
+      "group": "count",
+      "question": "How many candidate rooms are detected in plan 8?",
+      "operation": "count_elements",
+      "arguments": {
+        "floor_plan_id": 8,
+        "category": "room"
+      },
+      "expected": {
+        "candidate_count": 11
+      },
+      "comparison": "single_count",
+      "status": "passed",
+      "actual": {
+        "candidate_count": 11
+      },
+      "sql": "SELECT floor_plan_id, category, COUNT(*) AS candidate_count FROM elements WHERE floor_plan_id = ? AND category = ? GROUP BY floor_plan_id, category ORDER BY floor_plan_id, category",
+      "parameters": [
+        8,
+        "room"
+      ],
+      "returned_data": [
+        {
+          "floor_plan_id": 8,
+          "category": "room",
+          "candidate_count": 11
+        }
+      ],
+      "uncertainty": "Counts include unverified candidate detections.",
+      "live_gemini_tested": false
+    },
+    {
+      "id": "E03",
+      "group": "count",
+      "question": "How many candidate doors are in plan 31?",
+      "operation": "count_elements",
+      "arguments": {
+        "floor_plan_id": 31,
+        "category": "door"
+      },
+      "expected": {
+        "candidate_count": 5
+      },
+      "comparison": "single_count",
+      "status": "passed",
+      "actual": {
+        "candidate_count": 5
+      },
+      "sql": "SELECT floor_plan_id, category, COUNT(*) AS candidate_count FROM elements WHERE floor_plan_id = ? AND category = ? GROUP BY floor_plan_id, category ORDER BY floor_plan_id, category",
+      "parameters": [
+        31,
+        "door"
+      ],
+      "returned_data": [
+        {
+          "floor_plan_id": 31,
+          "category": "door",
+          "candidate_count": 5
+        }
+      ],
+      "uncertainty": "Counts include unverified candidate detections.",
+      "live_gemini_tested": false
+    },
+    {
+      "id": "E04",
+      "group": "count",
+      "question": "How many candidate windows are in plan 61?",
+      "operation": "count_elements",
+      "arguments": {
+        "floor_plan_id": 61,
+        "category": "window"
+      },
+      "expected": {
+        "candidate_count": 6
+      },
+      "comparison": "single_count",
+      "status": "passed",
+      "actual": {
+        "candidate_count": 6
+      },
+      "sql": "SELECT floor_plan_id, category, COUNT(*) AS candidate_count FROM elements WHERE floor_plan_id = ? AND category = ? GROUP BY floor_plan_id, category ORDER BY floor_plan_id, category",
+      "parameters": [
+        61,
+        "window"
+      ],
+      "returned_data": [
+        {
+          "floor_plan_id": 61,
+          "category": "window",
+          "candidate_count": 6
+        }
+      ],
+      "uncertainty": "Counts include unverified candidate detections.",
+      "live_gemini_tested": false
+    },
+    {
+      "id": "E05",
+      "group": "count",
+      "question": "How many candidate walls are in plan 8?",
+      "operation": "count_elements",
+      "arguments": {
+        "floor_plan_id": 8,
+        "category": "wall"
+      },
+      "expected": {
+        "candidate_count": 16
+      },
+      "comparison": "single_count",
+      "status": "passed",
+      "actual": {
+        "candidate_count": 16
+      },
+      "sql": "SELECT floor_plan_id, category, COUNT(*) AS candidate_count FROM elements WHERE floor_plan_id = ? AND category = ? GROUP BY floor_plan_id, category ORDER BY floor_plan_id, category",
+      "parameters": [
+        8,
+        "wall"
+      ],
+      "returned_data": [
+        {
+          "floor_plan_id": 8,
+          "category": "wall",
+          "candidate_count": 16
+        }
+      ],
+      "uncertainty": "Counts include unverified candidate detections.",
+      "live_gemini_tested": false
+    },
+    {
+      "id": "E06",
+      "group": "area",
+      "question": "What is the largest candidate room region in plan 8?",
+      "operation": "largest_room",
+      "arguments": {
+        "floor_plan_id": 8
+      },
+      "expected": {
+        "detection_id": "8-room-region-004",
+        "pixel_area": 80545
+      },
+      "comparison": "largest",
+      "status": "passed",
+      "actual": {
+        "detection_id": "8-room-region-004",
+        "pixel_area": 80545
+      },
+      "sql": "SELECT detection_id, floor_plan_id, bbox_x, bbox_y, bbox_width, bbox_height, pixel_area, confidence, semantic_status, detection_method, evidence_json FROM elements WHERE category='room' AND (? IS NULL OR floor_plan_id=?) ORDER BY pixel_area DESC LIMIT 1",
+      "parameters": [
+        8,
+        8
+      ],
+      "returned_data": [
+        {
+          "detection_id": "8-room-region-004",
+          "floor_plan_id": 8,
+          "bbox_x": 469,
+          "bbox_y": 452,
+          "bbox_width": 242,
+          "bbox_height": 335,
+          "pixel_area": 80545,
+          "confidence": 0.68,
+          "semantic_status": "CANDIDATE",
+          "detection_method": "Otsu dark-ink threshold, 7x7 morphological close, enclosed-light connected components",
+          "evidence": [
+            "Geometrically enclosed light region found inside the mask-derived building ROI.",
+            "Original-image light-pixel fraction: 1.000.",
+            "Original-image Canny edge overlap on region boundary: 0.493.",
+            "Mask palette overlap is supporting evidence only; region is not confirmed as a room."
+          ]
+        }
+      ],
+      "uncertainty": "Largest candidate region by pixel area, not verified room area or square metres.",
+      "live_gemini_tested": false
+    },
+    {
+      "id": "E07",
+      "group": "area",
+      "question": "What is the largest candidate room region in plan 31?",
+      "operation": "largest_room",
+      "arguments": {
+        "floor_plan_id": 31
+      },
+      "expected": {
+        "detection_id": "31-room-region-002",
+        "pixel_area": 43294
+      },
+      "comparison": "largest",
+      "status": "passed",
+      "actual": {
+        "detection_id": "31-room-region-002",
+        "pixel_area": 43294
+      },
+      "sql": "SELECT detection_id, floor_plan_id, bbox_x, bbox_y, bbox_width, bbox_height, pixel_area, confidence, semantic_status, detection_method, evidence_json FROM elements WHERE category='room' AND (? IS NULL OR floor_plan_id=?) ORDER BY pixel_area DESC LIMIT 1",
+      "parameters": [
+        31,
+        31
+      ],
+      "returned_data": [
+        {
+          "detection_id": "31-room-region-002",
+          "floor_plan_id": 31,
+          "bbox_x": 1865,
+          "bbox_y": 1108,
+          "bbox_width": 436,
+          "bbox_height": 212,
+          "pixel_area": 43294,
+          "confidence": 0.634,
+          "semantic_status": "CANDIDATE",
+          "detection_method": "Otsu dark-ink threshold, 7x7 morphological close, enclosed-light connected components",
+          "evidence": [
+            "Geometrically enclosed light region found inside the mask-derived building ROI.",
+            "Original-image light-pixel fraction: 1.000.",
+            "Original-image Canny edge overlap on region boundary: 0.512.",
+            "Mask palette overlap is supporting evidence only; region is not confirmed as a room."
+          ]
+        }
+      ],
+      "uncertainty": "Largest candidate region by pixel area, not verified room area or square metres.",
+      "live_gemini_tested": false
+    },
+    {
+      "id": "E08",
+      "group": "area",
+      "question": "What is the total candidate room area in pixels for plan 61?",
+      "operation": "sum_room_pixel_area",
+      "arguments": {
+        "floor_plan_id": 61
+      },
+      "expected": {
+        "floor_plan_id": 61,
+        "candidate_room_count": 4,
+        "total_candidate_room_pixels": 598552
+      },
+      "comparison": "sum",
+      "status": "passed",
+      "actual": {
+        "floor_plan_id": 61,
+        "candidate_room_count": 4,
+        "total_candidate_room_pixels": 598552
+      },
+      "sql": "SELECT floor_plan_id, COUNT(*) AS candidate_room_count, COALESCE(SUM(pixel_area),0) AS total_candidate_room_pixels FROM elements WHERE category='room' AND (? IS NULL OR floor_plan_id=?) GROUP BY floor_plan_id ORDER BY floor_plan_id",
+      "parameters": [
+        61,
+        61
+      ],
+      "returned_data": [
+        {
+          "floor_plan_id": 61,
+          "candidate_room_count": 4,
+          "total_candidate_room_pixels": 598552
+        }
+      ],
+      "uncertainty": "Area is summed in pixels; no physical scale is available and overlapping candidate boxes may double-count geometry.",
+      "live_gemini_tested": false
+    },
+    {
+      "id": "E09",
+      "group": "area",
+      "question": "What is the total candidate room area in pixels across all plans?",
+      "operation": "sum_room_pixel_area",
+      "arguments": {},
+      "expected": {
+        "total_candidate_room_pixels": 87290412,
+        "candidate_room_count": 889
+      },
+      "comparison": "sum_all",
+      "status": "passed",
+      "actual": {
+        "candidate_room_count": 889,
+        "total_candidate_room_pixels": 87290412
+      },
+      "sql": "SELECT floor_plan_id, COUNT(*) AS candidate_room_count, COALESCE(SUM(pixel_area),0) AS total_candidate_room_pixels FROM elements WHERE category='room' AND (? IS NULL OR floor_plan_id=?) GROUP BY floor_plan_id ORDER BY floor_plan_id",
+      "parameters": [
+        null,
+        null
+      ],
+      "returned_data": [
+        {
+          "floor_plan_id": 1,
+          "candidate_room_count": 16,
+          "total_candidate_room_pixels": 469700
+        },
+        {
+          "floor_plan_id": 2,
+          "candidate_room_count": 15,
+          "total_candidate_room_pixels": 159452
+        },
+        {
+          "floor_plan_id": 3,
+          "candidate_room_count": 18,
+          "total_candidate_room_pixels": 369844
+        },
+        {
+          "floor_plan_id": 4,
+          "candidate_room_count": 12,
+          "total_candidate_room_pixels": 208479
+        },
+        {
+          "floor_plan_id": 5,
+          "candidate_room_count": 15,
+          "total_candidate_room_pixels": 264857
+        },
+        {
+          "floor_plan_id": 6,
+          "candidate_room_count": 17,
+          "total_candidate_room_pixels": 649590
+        },
+        {
+          "floor_plan_id": 7,
+          "candidate_room_count": 15,
+          "total_candidate_room_pixels": 449659
+        },
+        {
+          "floor_plan_id": 8,
+          "candidate_room_count": 11,
+          "total_candidate_room_pixels": 371767
+        },
+        {
+          "floor_plan_id": 9,
+          "candidate_room_count": 16,
+          "total_candidate_room_pixels": 611500
+        },
+        {
+          "floor_plan_id": 10,
+          "candidate_room_count": 16,
+          "total_candidate_room_pixels": 921617
+        },
+        {
+          "floor_plan_id": 11,
+          "candidate_room_count": 15,
+          "total_candidate_room_pixels": 1597848
+        },
+        {
+          "floor_plan_id": 12,
+          "candidate_room_count": 17,
+          "total_candidate_room_pixels": 1618923
+        },
+        {
+          "floor_plan_id": 13,
+          "candidate_room_count": 11,
+          "total_candidate_room_pixels": 1833406
+        },
+        {
+          "floor_plan_id": 14,
+          "candidate_room_count": 4,
+          "total_candidate_room_pixels": 885180
+        },
+        {
+          "floor_plan_id": 15,
+          "candidate_room_count": 3,
+          "total_candidate_room_pixels": 214303
+        },
+        {
+          "floor_plan_id": 16,
+          "candidate_room_count": 6,
+          "total_candidate_room_pixels": 450715
+        },
+        {
+          "floor_plan_id": 17,
+          "candidate_room_count": 6,
+          "total_candidate_room_pixels": 1272910
+        },
+        {
+          "floor_plan_id": 18,
+          "candidate_room_count": 7,
+          "total_candidate_room_pixels": 514858
+        },
+        {
+          "floor_plan_id": 19,
+          "candidate_room_count": 7,
+          "total_candidate_room_pixels": 1305197
+        },
+        {
+          "floor_plan_id": 20,
+          "candidate_room_count": 6,
+          "total_candidate_room_pixels": 1702676
+        },
+        {
+          "floor_plan_id": 21,
+          "candidate_room_count": 7,
+          "total_candidate_room_pixels": 650368
+        },
+        {
+          "floor_plan_id": 22,
+          "candidate_room_count": 17,
+          "total_candidate_room_pixels": 1586627
+        },
+        {
+          "floor_plan_id": 23,
+          "candidate_room_count": 12,
+          "total_candidate_room_pixels": 1271013
+        },
+        {
+          "floor_plan_id": 24,
+          "candidate_room_count": 10,
+          "total_candidate_room_pixels": 1171040
+        },
+        {
+          "floor_plan_id": 25,
+          "candidate_room_count": 6,
+          "total_candidate_room_pixels": 415123
+        },
+        {
+          "floor_plan_id": 26,
+          "candidate_room_count": 8,
+          "total_candidate_room_pixels": 2317161
+        },
+        {
+          "floor_plan_id": 27,
+          "candidate_room_count": 11,
+          "total_candidate_room_pixels": 1061609
+        },
+        {
+          "floor_plan_id": 28,
+          "candidate_room_count": 1,
+          "total_candidate_room_pixels": 456946
+        },
+        {
+          "floor_plan_id": 29,
+          "candidate_room_count": 2,
+          "total_candidate_room_pixels": 173893
+        },
+        {
+          "floor_plan_id": 30,
+          "candidate_room_count": 9,
+          "total_candidate_room_pixels": 1444852
+        },
+        {
+          "floor_plan_id": 31,
+          "candidate_room_count": 2,
+          "total_candidate_room_pixels": 69754
+        },
+        {
+          "floor_plan_id": 32,
+          "candidate_room_count": 2,
+          "total_candidate_room_pixels": 26288
+        },
+        {
+          "floor_plan_id": 33,
+          "candidate_room_count": 14,
+          "total_candidate_room_pixels": 1194870
+        },
+        {
+          "floor_plan_id": 34,
+          "candidate_room_count": 10,
+          "total_candidate_room_pixels": 1090263
+        },
+        {
+          "floor_plan_id": 35,
+          "candidate_room_count": 12,
+          "total_candidate_room_pixels": 1103693
+        },
+        {
+          "floor_plan_id": 36,
+          "candidate_room_count": 10,
+          "total_candidate_room_pixels": 744711
+        },
+        {
+          "floor_plan_id": 37,
+          "candidate_room_count": 10,
+          "total_candidate_room_pixels": 1404296
+        },
+        {
+          "floor_plan_id": 38,
+          "candidate_room_count": 10,
+          "total_candidate_room_pixels": 1443562
+        },
+        {
+          "floor_plan_id": 39,
+          "candidate_room_count": 18,
+          "total_candidate_room_pixels": 1714639
+        },
+        {
+          "floor_plan_id": 40,
+          "candidate_room_count": 10,
+          "total_candidate_room_pixels": 1575911
+        },
+        {
+          "floor_plan_id": 41,
+          "candidate_room_count": 16,
+          "total_candidate_room_pixels": 1741941
+        },
+        {
+          "floor_plan_id": 42,
+          "candidate_room_count": 6,
+          "total_candidate_room_pixels": 117105
+        },
+        {
+          "floor_plan_id": 43,
+          "candidate_room_count": 2,
+          "total_candidate_room_pixels": 362610
+        },
+        {
+          "floor_plan_id": 44,
+          "candidate_room_count": 14,
+          "total_candidate_room_pixels": 2145488
+        },
+        {
+          "floor_plan_id": 45,
+          "candidate_room_count": 5,
+          "total_candidate_room_pixels": 476931
+        },
+        {
+          "floor_plan_id": 46,
+          "candidate_room_count": 2,
+          "total_candidate_room_pixels": 48262
+        },
+        {
+          "floor_plan_id": 47,
+          "candidate_room_count": 9,
+          "total_candidate_room_pixels": 201652
+        },
+        {
+          "floor_plan_id": 48,
+          "candidate_room_count": 5,
+          "total_candidate_room_pixels": 255222
+        },
+        {
+          "floor_plan_id": 49,
+          "candidate_room_count": 5,
+          "total_candidate_room_pixels": 835669
+        },
+        {
+          "floor_plan_id": 50,
+          "candidate_room_count": 10,
+          "total_candidate_room_pixels": 1790855
+        },
+        {
+          "floor_plan_id": 51,
+          "candidate_room_count": 2,
+          "total_candidate_room_pixels": 60032
+        },
+        {
+          "floor_plan_id": 52,
+          "candidate_room_count": 5,
+          "total_candidate_room_pixels": 460336
+        },
+        {
+          "floor_plan_id": 53,
+          "candidate_room_count": 2,
+          "total_candidate_room_pixels": 133982
+        },
+        {
+          "floor_plan_id": 54,
+          "candidate_room_count": 3,
+          "total_candidate_room_pixels": 61293
+        },
+        {
+          "floor_plan_id": 55,
+          "candidate_room_count": 2,
+          "total_candidate_room_pixels": 26334
+        },
+        {
+          "floor_plan_id": 56,
+          "candidate_room_count": 5,
+          "total_candidate_room_pixels": 370026
+        },
+        {
+          "floor_plan_id": 57,
+          "candidate_room_count": 3,
+          "total_candidate_room_pixels": 208977
+        },
+        {
+          "floor_plan_id": 58,
+          "candidate_room_count": 3,
+          "total_candidate_room_pixels": 93673
+        },
+        {
+          "floor_plan_id": 59,
+          "candidate_room_count": 3,
+          "total_candidate_room_pixels": 140957
+        },
+        {
+          "floor_plan_id": 60,
+          "candidate_room_count": 3,
+          "total_candidate_room_pixels": 713965
+        },
+        {
+          "floor_plan_id": 61,
+          "candidate_room_count": 4,
+          "total_candidate_room_pixels": 598552
+        },
+        {
+          "floor_plan_id": 62,
+          "candidate_room_count": 3,
+          "total_candidate_room_pixels": 324803
+        },
+        {
+          "floor_plan_id": 63,
+          "candidate_room_count": 2,
+          "total_candidate_room_pixels": 136234
+        },
+        {
+          "floor_plan_id": 64,
+          "candidate_room_count": 7,
+          "total_candidate_room_pixels": 1127404
+        },
+        {
+          "floor_plan_id": 65,
+          "candidate_room_count": 3,
+          "total_candidate_room_pixels": 76138
+        },
+        {
+          "floor_plan_id": 66,
+          "candidate_room_count": 3,
+          "total_candidate_room_pixels": 737655
+        },
+        {
+          "floor_plan_id": 67,
+          "candidate_room_count": 3,
+          "total_candidate_room_pixels": 361847
+        },
+        {
+          "floor_plan_id": 68,
+          "candidate_room_count": 4,
+          "total_candidate_room_pixels": 340784
+        },
+        {
+          "floor_plan_id": 69,
+          "candidate_room_count": 3,
+          "total_candidate_room_pixels": 99180
+        },
+        {
+          "floor_plan_id": 70,
+          "candidate_room_count": 8,
+          "total_candidate_room_pixels": 886643
+        },
+        {
+          "floor_plan_id": 71,
+          "candidate_room_count": 8,
+          "total_candidate_room_pixels": 879519
+        },
+        {
+          "floor_plan_id": 72,
+          "candidate_room_count": 10,
+          "total_candidate_room_pixels": 1172065
+        },
+        {
+          "floor_plan_id": 73,
+          "candidate_room_count": 3,
+          "total_candidate_room_pixels": 713738
+        },
+        {
+          "floor_plan_id": 74,
+          "candidate_room_count": 6,
+          "total_candidate_room_pixels": 500164
+        },
+        {
+          "floor_plan_id": 75,
+          "candidate_room_count": 17,
+          "total_candidate_room_pixels": 1994190
+        },
+        {
+          "floor_plan_id": 76,
+          "candidate_room_count": 10,
+          "total_candidate_room_pixels": 472920
+        },
+        {
+          "floor_plan_id": 77,
+          "candidate_room_count": 16,
+          "total_candidate_room_pixels": 1361015
+        },
+        {
+          "floor_plan_id": 78,
+          "candidate_room_count": 12,
+          "total_candidate_room_pixels": 919754
+        },
+        {
+          "floor_plan_id": 79,
+          "candidate_room_count": 5,
+          "total_candidate_room_pixels": 774789
+        },
+        {
+          "floor_plan_id": 80,
+          "candidate_room_count": 5,
+          "total_candidate_room_pixels": 238885
+        },
+        {
+          "floor_plan_id": 81,
+          "candidate_room_count": 2,
+          "total_candidate_room_pixels": 54909
+        },
+        {
+          "floor_plan_id": 82,
+          "candidate_room_count": 2,
+          "total_candidate_room_pixels": 166029
+        },
+        {
+          "floor_plan_id": 83,
+          "candidate_room_count": 8,
+          "total_candidate_room_pixels": 761343
+        },
+        {
+          "floor_plan_id": 84,
+          "candidate_room_count": 6,
+          "total_candidate_room_pixels": 459416
+        },
+        {
+          "floor_plan_id": 86,
+          "candidate_room_count": 3,
+          "total_candidate_room_pixels": 66998
+        },
+        {
+          "floor_plan_id": 87,
+          "candidate_room_count": 8,
+          "total_candidate_room_pixels": 1256828
+        },
+        {
+          "floor_plan_id": 88,
+          "candidate_room_count": 3,
+          "total_candidate_room_pixels": 73175
+        },
+        {
+          "floor_plan_id": 89,
+          "candidate_room_count": 5,
+          "total_candidate_room_pixels": 151365
+        },
+        {
+          "floor_plan_id": 90,
+          "candidate_room_count": 5,
+          "total_candidate_room_pixels": 183320
+        },
+        {
+          "floor_plan_id": 91,
+          "candidate_room_count": 9,
+          "total_candidate_room_pixels": 479087
+        },
+        {
+          "floor_plan_id": 92,
+          "candidate_room_count": 4,
+          "total_candidate_room_pixels": 63376
+        },
+        {
+          "floor_plan_id": 93,
+          "candidate_room_count": 1,
+          "total_candidate_room_pixels": 28196
+        },
+        {
+          "floor_plan_id": 94,
+          "candidate_room_count": 6,
+          "total_candidate_room_pixels": 845010
+        },
+        {
+          "floor_plan_id": 95,
+          "candidate_room_count": 1,
+          "total_candidate_room_pixels": 14560
+        },
+        {
+          "floor_plan_id": 96,
+          "candidate_room_count": 3,
+          "total_candidate_room_pixels": 176025
+        },
+        {
+          "floor_plan_id": 97,
+          "candidate_room_count": 4,
+          "total_candidate_room_pixels": 471279
+        },
+        {
+          "floor_plan_id": 98,
+          "candidate_room_count": 3,
+          "total_candidate_room_pixels": 182458
+        },
+        {
+          "floor_plan_id": 99,
+          "candidate_room_count": 7,
+          "total_candidate_room_pixels": 199260
+        },
+        {
+          "floor_plan_id": 100,
+          "candidate_room_count": 10,
+          "total_candidate_room_pixels": 985987
+        },
+        {
+          "floor_plan_id": 101,
+          "candidate_room_count": 3,
+          "total_candidate_room_pixels": 960587
+        },
+        {
+          "floor_plan_id": 102,
+          "candidate_room_count": 5,
+          "total_candidate_room_pixels": 894417
+        },
+        {
+          "floor_plan_id": 103,
+          "candidate_room_count": 10,
+          "total_candidate_room_pixels": 840535
+        },
+        {
+          "floor_plan_id": 104,
+          "candidate_room_count": 5,
+          "total_candidate_room_pixels": 730315
+        },
+        {
+          "floor_plan_id": 105,
+          "candidate_room_count": 7,
+          "total_candidate_room_pixels": 715236
+        },
+        {
+          "floor_plan_id": 106,
+          "candidate_room_count": 6,
+          "total_candidate_room_pixels": 973922
+        },
+        {
+          "floor_plan_id": 107,
+          "candidate_room_count": 8,
+          "total_candidate_room_pixels": 1251052
+        },
+        {
+          "floor_plan_id": 108,
+          "candidate_room_count": 11,
+          "total_candidate_room_pixels": 891247
+        },
+        {
+          "floor_plan_id": 109,
+          "candidate_room_count": 8,
+          "total_candidate_room_pixels": 730802
+        },
+        {
+          "floor_plan_id": 110,
+          "candidate_room_count": 3,
+          "total_candidate_room_pixels": 762675
+        },
+        {
+          "floor_plan_id": 111,
+          "candidate_room_count": 1,
+          "total_candidate_room_pixels": 176213
+        },
+        {
+          "floor_plan_id": 112,
+          "candidate_room_count": 13,
+          "total_candidate_room_pixels": 1168867
+        },
+        {
+          "floor_plan_id": 113,
+          "candidate_room_count": 7,
+          "total_candidate_room_pixels": 450437
+        },
+        {
+          "floor_plan_id": 114,
+          "candidate_room_count": 10,
+          "total_candidate_room_pixels": 1285530
+        },
+        {
+          "floor_plan_id": 115,
+          "candidate_room_count": 8,
+          "total_candidate_room_pixels": 743028
+        },
+        {
+          "floor_plan_id": 116,
+          "candidate_room_count": 12,
+          "total_candidate_room_pixels": 1223393
+        },
+        {
+          "floor_plan_id": 117,
+          "candidate_room_count": 7,
+          "total_candidate_room_pixels": 674196
+        },
+        {
+          "floor_plan_id": 118,
+          "candidate_room_count": 4,
+          "total_candidate_room_pixels": 734839
+        },
+        {
+          "floor_plan_id": 119,
+          "candidate_room_count": 4,
+          "total_candidate_room_pixels": 845246
+        },
+        {
+          "floor_plan_id": 120,
+          "candidate_room_count": 8,
+          "total_candidate_room_pixels": 1907296
+        },
+        {
+          "floor_plan_id": 121,
+          "candidate_room_count": 8,
+          "total_candidate_room_pixels": 1961269
+        }
+      ],
+      "uncertainty": "Area is summed in pixels; no physical scale is available and overlapping candidate boxes may double-count geometry.",
+      "live_gemini_tested": false
+    },
+    {
+      "id": "E10",
+      "group": "comparison",
+      "question": "Compare candidate room counts in plans 8 and 31.",
+      "operation": "compare_room_counts",
+      "arguments": {
+        "floor_plan_id_a": 8,
+        "floor_plan_id_b": 31
+      },
+      "expected": {
+        "counts": [
+          {
+            "floor_plan_id": 8,
+            "candidate_room_count": 11
+          },
+          {
+            "floor_plan_id": 31,
+            "candidate_room_count": 2
+          }
+        ]
+      },
+      "comparison": "compare",
+      "status": "passed",
+      "actual": {
+        "counts": [
+          {
+            "floor_plan_id": 8,
+            "candidate_room_count": 11
+          },
+          {
+            "floor_plan_id": 31,
+            "candidate_room_count": 2
+          }
+        ]
+      },
+      "sql": "SELECT floor_plan_id, COUNT(*) AS candidate_room_count FROM elements WHERE category='room' AND floor_plan_id IN (?, ?) GROUP BY floor_plan_id ORDER BY floor_plan_id",
+      "parameters": [
+        8,
+        31
+      ],
+      "returned_data": [
+        {
+          "floor_plan_id": 8,
+          "candidate_room_count": 11
+        },
+        {
+          "floor_plan_id": 31,
+          "candidate_room_count": 2
+        }
+      ],
+      "uncertainty": "Comparison is between candidate-room detections.",
+      "live_gemini_tested": false
+    },
+    {
+      "id": "E11",
+      "group": "cross-plan comparison",
+      "question": "Which plans have the most candidate room regions?",
+      "operation": "most_rooms",
+      "arguments": {},
+      "expected": {
+        "top_plans": [
+          {
+            "floor_plan_id": 3,
+            "candidate_room_count": 18
+          },
+          {
+            "floor_plan_id": 39,
+            "candidate_room_count": 18
+          },
+          {
+            "floor_plan_id": 6,
+            "candidate_room_count": 17
+          },
+          {
+            "floor_plan_id": 12,
+            "candidate_room_count": 17
+          },
+          {
+            "floor_plan_id": 22,
+            "candidate_room_count": 17
+          },
+          {
+            "floor_plan_id": 75,
+            "candidate_room_count": 17
+          },
+          {
+            "floor_plan_id": 1,
+            "candidate_room_count": 16
+          },
+          {
+            "floor_plan_id": 9,
+            "candidate_room_count": 16
+          },
+          {
+            "floor_plan_id": 10,
+            "candidate_room_count": 16
+          },
+          {
+            "floor_plan_id": 41,
+            "candidate_room_count": 16
+          }
+        ]
+      },
+      "comparison": "top",
+      "status": "passed",
+      "actual": {
+        "top_plans": [
+          {
+            "floor_plan_id": 3,
+            "candidate_room_count": 18
+          },
+          {
+            "floor_plan_id": 39,
+            "candidate_room_count": 18
+          },
+          {
+            "floor_plan_id": 6,
+            "candidate_room_count": 17
+          },
+          {
+            "floor_plan_id": 12,
+            "candidate_room_count": 17
+          },
+          {
+            "floor_plan_id": 22,
+            "candidate_room_count": 17
+          },
+          {
+            "floor_plan_id": 75,
+            "candidate_room_count": 17
+          },
+          {
+            "floor_plan_id": 1,
+            "candidate_room_count": 16
+          },
+          {
+            "floor_plan_id": 9,
+            "candidate_room_count": 16
+          },
+          {
+            "floor_plan_id": 10,
+            "candidate_room_count": 16
+          },
+          {
+            "floor_plan_id": 41,
+            "candidate_room_count": 16
+          }
+        ]
+      },
+      "sql": "SELECT fp.image_id AS floor_plan_id, COUNT(e.detection_id) AS candidate_room_count FROM floor_plans fp LEFT JOIN elements e ON e.floor_plan_id=fp.image_id AND e.category='room' GROUP BY fp.image_id ORDER BY candidate_room_count DESC, fp.image_id LIMIT 10",
+      "parameters": [],
+      "returned_data": [
+        {
+          "floor_plan_id": 3,
+          "candidate_room_count": 18
+        },
+        {
+          "floor_plan_id": 39,
+          "candidate_room_count": 18
+        },
+        {
+          "floor_plan_id": 6,
+          "candidate_room_count": 17
+        },
+        {
+          "floor_plan_id": 12,
+          "candidate_room_count": 17
+        },
+        {
+          "floor_plan_id": 22,
+          "candidate_room_count": 17
+        },
+        {
+          "floor_plan_id": 75,
+          "candidate_room_count": 17
+        },
+        {
+          "floor_plan_id": 1,
+          "candidate_room_count": 16
+        },
+        {
+          "floor_plan_id": 9,
+          "candidate_room_count": 16
+        },
+        {
+          "floor_plan_id": 10,
+          "candidate_room_count": 16
+        },
+        {
+          "floor_plan_id": 41,
+          "candidate_room_count": 16
+        }
+      ],
+      "uncertainty": "Ranking uses candidate-room regions, not verified rooms.",
+      "live_gemini_tested": false
+    },
+    {
+      "id": "E12",
+      "group": "location",
+      "question": "Show the bounding box of a candidate room in plan 8.",
+      "operation": "get_element",
+      "arguments": {
+        "detection_id": "8-room-region-001"
+      },
+      "expected": {
+        "detection_id": "8-room-region-001",
+        "floor_plan_id": 8,
+        "bbox_x": 469,
+        "bbox_y": 282,
+        "bbox_width": 243,
+        "bbox_height": 168
+      },
+      "comparison": "element",
+      "status": "passed",
+      "actual": {
+        "detection_id": "8-room-region-001",
+        "floor_plan_id": 8,
+        "bbox_x": 469,
+        "bbox_y": 282,
+        "bbox_width": 243,
+        "bbox_height": 168
+      },
+      "sql": "SELECT detection_id, floor_plan_id, category, detection_type, semantic_status, bbox_x, bbox_y, bbox_width, bbox_height, pixel_area, area_unit, confidence, confidence_kind, detection_method, evidence_json, details_json FROM elements WHERE detection_id=?",
+      "parameters": [
+        "8-room-region-001"
+      ],
+      "returned_data": [
+        {
+          "detection_id": "8-room-region-001",
+          "floor_plan_id": 8,
+          "category": "room",
+          "detection_type": "candidate_enclosed_region",
+          "semantic_status": "CANDIDATE",
+          "bbox_x": 469,
+          "bbox_y": 282,
+          "bbox_width": 243,
+          "bbox_height": 168,
+          "pixel_area": 40499,
+          "area_unit": "pixels",
+          "confidence": 0.68,
+          "confidence_kind": "heuristic_not_calibrated",
+          "detection_method": "Otsu dark-ink threshold, 7x7 morphological close, enclosed-light connected components",
+          "evidence": [
+            "Geometrically enclosed light region found inside the mask-derived building ROI.",
+            "Original-image light-pixel fraction: 1.000.",
+            "Original-image Canny edge overlap on region boundary: 0.493.",
+            "Mask palette overlap is supporting evidence only; region is not confirmed as a room."
+          ],
+          "details": {
+            "id": "8-room-region-001",
+            "type": "candidate_enclosed_region",
+            "semantic_status": "CANDIDATE",
+            "semantic_interpretation": "room_or_enclosed_space_candidate",
+            "bounding_box": {
+              "x": 469,
+              "y": 282,
+              "width": 243,
+              "height": 168
+            },
+            "pixel_area": 40499,
+            "confidence": 0.68,
+            "detection_method": "Otsu dark-ink threshold, 7x7 morphological close, enclosed-light connected components",
+            "evidence": [
+              "Geometrically enclosed light region found inside the mask-derived building ROI.",
+              "Original-image light-pixel fraction: 1.000.",
+              "Original-image Canny edge overlap on region boundary: 0.493.",
+              "Mask palette overlap is supporting evidence only; region is not confirmed as a room."
+            ],
+            "shape_metrics": {
+              "rectangularity": 0.992,
+              "aspect_ratio": 1.4464,
+              "light_pixel_fraction": 1.0,
+              "edge_boundary_fraction": 0.4928
+            },
+            "mask_color_support": [
+              {
+                "candidate_name": "Room",
+                "candidate_rgb": [
+                  255,
+                  142,
+                  70
+                ],
+                "pixels": 23306,
+                "status": "CANDIDATE"
+              },
+              {
+                "candidate_name": "Separation",
+                "candidate_rgb": [
+                  0,
+                  142,
+                  142
+                ],
+                "pixels": 6170,
+                "status": "CANDIDATE"
+              },
+              {
+                "candidate_name": "Unknown/background",
+                "candidate_rgb": [
+                  0,
+                  0,
+                  0
+                ],
+                "pixels": 5879,
+                "status": "CANDIDATE"
+              },
+              {
+                "candidate_name": "Wall",
+                "candidate_rgb": [
+                  175,
+                  216,
+                  248
+                ],
+                "pixels": 5144,
+                "status": "CANDIDATE"
+              }
+            ]
+          }
+        }
+      ],
+      "uncertainty": "Returned element is a candidate detection.",
+      "live_gemini_tested": false
+    },
+    {
+      "id": "E13",
+      "group": "summary",
+      "question": "Summarize candidate detections in plan 61.",
+      "operation": "get_floor_plan_summary",
+      "arguments": {
+        "floor_plan_id": 61
+      },
+      "expected": {
+        "image_id": 61,
+        "candidate_rooms": 4,
+        "candidate_walls": 13,
+        "candidate_doors": 0,
+        "candidate_windows": 6,
+        "room_pixel_area_total": 598552,
+        "uncertainty_count": 3
+      },
+      "comparison": "summary",
+      "status": "passed",
+      "actual": {
+        "image_id": 61,
+        "candidate_rooms": 4,
+        "candidate_walls": 13,
+        "candidate_doors": 0,
+        "candidate_windows": 6,
+        "room_pixel_area_total": 598552,
+        "uncertainty_count": 3
+      },
+      "sql": "SELECT fp.image_id, fp.image_width, fp.image_height,\n                SUM(CASE WHEN e.category='room' THEN 1 ELSE 0 END) AS candidate_rooms,\n                SUM(CASE WHEN e.category='wall' THEN 1 ELSE 0 END) AS candidate_walls,\n                SUM(CASE WHEN e.category='door' THEN 1 ELSE 0 END) AS candidate_doors,\n                SUM(CASE WHEN e.category='window' THEN 1 ELSE 0 END) AS candidate_windows,\n                COALESCE(SUM(CASE WHEN e.category='room' THEN e.pixel_area ELSE 0 END),0) AS room_pixel_area_total,\n                (SELECT COUNT(*) FROM uncertainties u WHERE u.floor_plan_id=fp.image_id) AS uncertainty_count\n                FROM floor_plans fp LEFT JOIN elements e ON e.floor_plan_id=fp.image_id\n                WHERE fp.image_id=? GROUP BY fp.image_id",
+      "parameters": [
+        61
+      ],
+      "returned_data": [
+        {
+          "image_id": 61,
+          "image_width": 2479,
+          "image_height": 3508,
+          "candidate_rooms": 4,
+          "candidate_walls": 13,
+          "candidate_doors": 0,
+          "candidate_windows": 6,
+          "room_pixel_area_total": 598552,
+          "uncertainty_count": 3
+        }
+      ],
+      "uncertainty": "All element counts are candidate detections.",
+      "live_gemini_tested": false
+    },
+    {
+      "id": "E14",
+      "group": "geometry",
+      "question": "Which candidate room boxes are adjacent in plan 31?",
+      "operation": "find_adjacent_rooms",
+      "arguments": {
+        "floor_plan_id": 31,
+        "tolerance_pixels": 5
+      },
+      "expected": {
+        "pairs": []
+      },
+      "comparison": "adjacency",
+      "status": "passed",
+      "actual": {
+        "pairs": []
+      },
+      "sql": "SELECT detection_id, floor_plan_id, bbox_x, bbox_y, bbox_width, bbox_height, pixel_area, confidence FROM elements WHERE floor_plan_id=? AND category='room' ORDER BY detection_id",
+      "parameters": [
+        31
+      ],
+      "returned_data": [],
+      "uncertainty": "Adjacency is estimated from bounding-box proximity; not topological room adjacency.",
+      "live_gemini_tested": false
+    },
+    {
+      "id": "E15",
+      "group": "count",
+      "question": "How many candidate elements of each category are in plan 61?",
+      "operation": "get_floor_plan_summary",
+      "arguments": {
+        "floor_plan_id": 61
+      },
+      "expected": {
+        "image_id": 61,
+        "candidate_rooms": 4,
+        "candidate_walls": 13,
+        "candidate_doors": 0,
+        "candidate_windows": 6,
+        "room_pixel_area_total": 598552,
+        "uncertainty_count": 3
+      },
+      "comparison": "categories",
+      "status": "passed",
+      "actual": {
+        "image_id": 61,
+        "candidate_rooms": 4,
+        "candidate_walls": 13,
+        "candidate_doors": 0,
+        "candidate_windows": 6,
+        "room_pixel_area_total": 598552,
+        "uncertainty_count": 3
+      },
+      "sql": "SELECT fp.image_id, fp.image_width, fp.image_height,\n                SUM(CASE WHEN e.category='room' THEN 1 ELSE 0 END) AS candidate_rooms,\n                SUM(CASE WHEN e.category='wall' THEN 1 ELSE 0 END) AS candidate_walls,\n                SUM(CASE WHEN e.category='door' THEN 1 ELSE 0 END) AS candidate_doors,\n                SUM(CASE WHEN e.category='window' THEN 1 ELSE 0 END) AS candidate_windows,\n                COALESCE(SUM(CASE WHEN e.category='room' THEN e.pixel_area ELSE 0 END),0) AS room_pixel_area_total,\n                (SELECT COUNT(*) FROM uncertainties u WHERE u.floor_plan_id=fp.image_id) AS uncertainty_count\n                FROM floor_plans fp LEFT JOIN elements e ON e.floor_plan_id=fp.image_id\n                WHERE fp.image_id=? GROUP BY fp.image_id",
+      "parameters": [
+        61
+      ],
+      "returned_data": [
+        {
+          "image_id": 61,
+          "image_width": 2479,
+          "image_height": 3508,
+          "candidate_rooms": 4,
+          "candidate_walls": 13,
+          "candidate_doors": 0,
+          "candidate_windows": 6,
+          "room_pixel_area_total": 598552,
+          "uncertainty_count": 3
+        }
+      ],
+      "uncertainty": "All element counts are candidate detections.",
+      "live_gemini_tested": false
+    },
+    {
+      "id": "E16",
+      "group": "unsupported",
+      "question": "What is the total room area in square metres for plan 8?",
+      "refusal": true,
+      "expected_action": "refuse",
+      "actual_action": "refuse",
+      "status": "correct_refusal",
+      "actual": {
+        "reason": "No reliable drawing scale is stored; only pixel areas and pixel bounding boxes are available.",
+        "database_tool": {
+          "tool": "get_data_capabilities",
+          "sql": "SELECT COUNT(*) AS processed_floor_plans FROM floor_plans",
+          "parameters": [],
+          "floor_plan_id": null,
+          "rows": [
+            {
+              "processed_floor_plans": 121
+            }
+          ],
+          "uncertainty": "Stored areas are pixels only. No room names, physical scale, materials, compass orientation, or authoritative color semantics are stored."
+        }
+      },
+      "live_gemini_tested": false
+    },
+    {
+      "id": "E17",
+      "group": "unsupported",
+      "question": "What are the room names and which one is the kitchen?",
+      "refusal": true,
+      "expected_action": "refuse",
+      "actual_action": "refuse",
+      "status": "correct_refusal",
+      "actual": {
+        "reason": "Room names and room-type labels are not stored or verified.",
+        "database_tool": {
+          "tool": "get_data_capabilities",
+          "sql": "SELECT COUNT(*) AS processed_floor_plans FROM floor_plans",
+          "parameters": [],
+          "floor_plan_id": null,
+          "rows": [
+            {
+              "processed_floor_plans": 121
+            }
+          ],
+          "uncertainty": "Stored areas are pixels only. No room names, physical scale, materials, compass orientation, or authoritative color semantics are stored."
+        }
+      },
+      "live_gemini_tested": false
+    },
+    {
+      "id": "E18",
+      "group": "unsupported",
+      "question": "How many parking doors are in plan 31?",
+      "refusal": true,
+      "expected_action": "refuse",
+      "actual_action": "refuse",
+      "status": "correct_refusal",
+      "actual": {
+        "reason": "Parking doors are not reliably identified in the stored candidate detections.",
+        "database_tool": {
+          "tool": "get_data_capabilities",
+          "sql": "SELECT COUNT(*) AS processed_floor_plans FROM floor_plans",
+          "parameters": [],
+          "floor_plan_id": null,
+          "rows": [
+            {
+              "processed_floor_plans": 121
+            }
+          ],
+          "uncertainty": "Stored areas are pixels only. No room names, physical scale, materials, compass orientation, or authoritative color semantics are stored."
+        }
+      },
+      "live_gemini_tested": false
+    },
+    {
+      "id": "E19",
+      "group": "unsupported",
+      "question": "What material are the walls made from?",
+      "refusal": true,
+      "expected_action": "refuse",
+      "actual_action": "refuse",
+      "status": "correct_refusal",
+      "actual": {
+        "reason": "That attribute is not present in the stored floor-plan records.",
+        "database_tool": {
+          "tool": "get_data_capabilities",
+          "sql": "SELECT COUNT(*) AS processed_floor_plans FROM floor_plans",
+          "parameters": [],
+          "floor_plan_id": null,
+          "rows": [
+            {
+              "processed_floor_plans": 121
+            }
+          ],
+          "uncertainty": "Stored areas are pixels only. No room names, physical scale, materials, compass orientation, or authoritative color semantics are stored."
+        }
+      },
+      "live_gemini_tested": false
+    },
+    {
+      "id": "E20",
+      "group": "unsupported",
+      "question": "What architectural class does the red mask color represent?",
+      "refusal": true,
+      "expected_action": "refuse",
+      "actual_action": "refuse",
+      "status": "correct_refusal",
+      "actual": {
+        "reason": "Mask color semantics are unverified; the red color remains unassigned.",
+        "database_tool": {
+          "tool": "get_data_capabilities",
+          "sql": "SELECT COUNT(*) AS processed_floor_plans FROM floor_plans",
+          "parameters": [],
+          "floor_plan_id": null,
+          "rows": [
+            {
+              "processed_floor_plans": 121
+            }
+          ],
+          "uncertainty": "Stored areas are pixels only. No room names, physical scale, materials, compass orientation, or authoritative color semantics are stored."
+        }
+      },
+      "live_gemini_tested": false
+    }
+  ]
+}
