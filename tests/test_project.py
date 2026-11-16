@@ -122,35 +122,100 @@ class ProjectIntegrationTests(unittest.TestCase):
                 str(self.database_path),
             )
 
-    def test_gemini_missing_key_is_explicit(self) -> None:
+    def test_gemini_missing_key_is_explicit_for_open_questions(self) -> None:
         result = GeminiAssistant(self.database_path, api_key="").ask(
-            "How many candidate rooms are in plan 8?", 8
+            "What do the candidate detections imply about circulation in plan 8?", 8
         )
         self.assertEqual(result["status"], "unconfigured")
         self.assertIn("GEMINI_API_KEY", result["answer"])
 
-    def test_gemini_manual_function_call_uses_database_tool(self) -> None:
+    def test_database_first_answers_count_question_without_gemini(self) -> None:
+        assistant = GeminiAssistant(self.database_path, api_key="")
+        result = assistant.ask(
+            "How many candidate rooms, walls, doors, and windows are detected in floor plan 8?",
+            8,
+        )
+        self.assertEqual(result["status"], "answered")
+        self.assertEqual(result["source"], "database")
+        self.assertEqual(result["tool_calls"][0]["tool"], "get_floor_plan_summary")
+        row = result["tool_calls"][0]["rows"][0]
+        self.assertEqual(int(row["candidate_rooms"]), 11)
+        self.assertEqual(int(row["candidate_walls"]), 16)
+        self.assertEqual(int(row["candidate_doors"]), 4)
+        self.assertEqual(int(row["candidate_windows"]), 2)
+        self.assertIn("11", result["answer"])
+        self.assertIn("16", result["answer"])
+        self.assertIn("4", result["answer"])
+        self.assertIn("2", result["answer"])
+        self.assertTrue(result["tool_calls"][0]["sql"].startswith("SELECT"))
+
+    def test_database_first_count_and_compare_and_refusal(self) -> None:
+        assistant = GeminiAssistant(self.database_path, api_key="")
+        doors = assistant.ask("How many candidate doors are in plan 31?", 31)
+        self.assertEqual(doors["status"], "answered")
+        self.assertEqual(doors["tool_calls"][0]["tool"], "count_elements")
+        door_count = int(doors["tool_calls"][0]["rows"][0]["candidate_count"])
+        self.assertGreater(door_count, 0)
+        self.assertIn(str(door_count), doors["answer"])
+
+        comparison = assistant.ask("Compare candidate room counts in plans 8 and 31.")
+        self.assertEqual(comparison["status"], "answered")
+        self.assertEqual(comparison["tool_calls"][0]["tool"], "compare_room_counts")
+        counts = {
+            int(row["floor_plan_id"]): int(row["candidate_room_count"])
+            for row in comparison["tool_calls"][0]["rows"]
+        }
+        self.assertEqual(counts[8], 11)
+        self.assertIn(31, counts)
+        self.assertIn("11", comparison["answer"])
+
+        refused = assistant.ask("What is the total room area in square metres for plan 8?")
+        self.assertEqual(refused["status"], "refused")
+        self.assertIn("scale", refused["answer"].lower())
+
+    def test_gemini_manual_function_call_uses_user_role_for_tool_response(self) -> None:
+        captured: list[object] = []
+
         class FakeModels:
             def __init__(self) -> None:
                 self.calls = 0
 
-            def generate_content(self, **_: object) -> SimpleNamespace:
+            def generate_content(self, **kwargs: object) -> SimpleNamespace:
                 self.calls += 1
+                captured.append(kwargs.get("contents"))
                 if self.calls == 1:
                     call = SimpleNamespace(
-                        name="get_floor_plan_summary",
-                        args={"floor_plan_id": 8},
+                        name="find_adjacent_rooms",
+                        args={"floor_plan_id": 8, "tolerance_pixels": 5},
                     )
                     return SimpleNamespace(function_calls=[call], candidates=[], text="")
-                return SimpleNamespace(function_calls=[], candidates=[], text="Database-backed candidate summary.")
+                return SimpleNamespace(
+                    function_calls=[],
+                    candidates=[],
+                    text="Geometry is a bounding-box estimate only.",
+                )
 
         assistant = GeminiAssistant(self.database_path, api_key="unit-test-key")
         assistant.client = SimpleNamespace(models=FakeModels())
-        result = assistant.ask("How many candidate rooms are in plan 8?", 8)
+        result = assistant.ask(
+            "What do the stored candidate detections imply about circulation in plan 8?",
+            8,
+        )
         self.assertEqual(result["status"], "answered")
-        self.assertEqual(result["tool_calls"][0]["tool"], "get_floor_plan_summary")
+        self.assertEqual(result["tool_calls"][0]["tool"], "find_adjacent_rooms")
         self.assertTrue(result["tool_calls"][0]["sql"].startswith("SELECT"))
-        self.assertEqual(result["tool_calls"][0]["rows"][0]["image_id"], 8)
+        self.assertGreaterEqual(len(captured), 2)
+        follow_up = captured[1]
+        roles = [getattr(item, "role", None) for item in follow_up]
+        self.assertNotIn("tool", roles)
+        function_roles = [
+            getattr(item, "role", None)
+            for item in follow_up
+            if getattr(item, "parts", None)
+            and any(getattr(part, "function_response", None) for part in item.parts)
+        ]
+        self.assertTrue(function_roles)
+        self.assertTrue(all(role == "user" for role in function_roles))
 
     def test_evaluation_contains_twenty_data_derived_cases(self) -> None:
         with tempfile.TemporaryDirectory(prefix="ask-floor-plan-eval-") as temporary:

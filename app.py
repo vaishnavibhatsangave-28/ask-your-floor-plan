@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
+import time
 from pathlib import Path
 from typing import Any
 
@@ -20,7 +22,8 @@ from database import (  # noqa: E402
     list_floor_plans,
     open_database,
 )
-from gemini_assistant import DEFAULT_MODEL, GeminiAssistant  # noqa: E402
+from gemini_assistant import GeminiAssistant, load_api_key, unsupported_reason  # noqa: E402
+from query_tools import execute_tool  # noqa: E402
 
 
 st.set_page_config(
@@ -66,6 +69,167 @@ def get_plan_elements(database_path: str, image_id: int) -> list[dict[str, Any]]
 def get_plan_record(database_path: str, image_id: int) -> tuple[dict[str, Any] | None, list[dict[str, Any]]]:
     with open_database(database_path, readonly=True) as connection:
         return get_floor_plan(connection, image_id), get_uncertainties(connection, image_id)
+
+
+def answer_database_question(
+    question: str,
+    database_path: str,
+    selected_floor_plan_id: int | None = None,
+) -> dict[str, Any] | None:
+    """Answer recognizable questions directly from approved SQLite query operations."""
+    started = time.perf_counter()
+    refusal_reason = unsupported_reason(question)
+    if refusal_reason:
+        try:
+            result = execute_tool("get_data_capabilities", {}, database_path)
+            return {
+                "status": "refused",
+                "source": "SQLite capability check",
+                "answer": f"I can’t answer that from the stored floor-plan data. {refusal_reason}",
+                "tool_calls": [result],
+                "supporting_data": result["rows"],
+                "floor_plan_id": selected_floor_plan_id,
+                "uncertainty": refusal_reason,
+                "elapsed_ms": (time.perf_counter() - started) * 1000,
+            }
+        except Exception as error:
+            return {
+                "status": "error",
+                "source": "SQLite capability check",
+                "answer": "The database could not be queried, so I cannot answer this unsupported question.",
+                "tool_calls": [],
+                "supporting_data": [],
+                "floor_plan_id": selected_floor_plan_id,
+                "uncertainty": f"{type(error).__name__}: {error}",
+                "elapsed_ms": (time.perf_counter() - started) * 1000,
+            }
+
+    lowered = question.lower()
+    plan_match = re.search(r"\b(?:floor\s*plan|plan)\s*#?\s*(\d+)\b", lowered)
+    image_id = int(plan_match.group(1)) if plan_match else selected_floor_plan_id
+    categories = [
+        category
+        for category, pattern in (
+            ("room", r"\brooms?\b"),
+            ("wall", r"\bwalls?\b"),
+            ("door", r"\bdoors?\b"),
+            ("window", r"\bwindows?\b"),
+        )
+        if re.search(pattern, lowered)
+    ]
+    count_intent = bool(re.search(r"\b(how many|count|number of|quantity of)\b", lowered))
+    operation: str | None = None
+    arguments: dict[str, Any] = {}
+    render_answer: Any = None
+
+    if count_intent and (categories or re.search(r"\b(candidate )?elements?\b", lowered)):
+        if image_id is not None:
+            operation = "get_floor_plan_summary"
+            arguments = {"floor_plan_id": image_id}
+
+            def render_answer(rows: list[dict[str, Any]]) -> str:
+                if not rows:
+                    return f"Floor plan {image_id} is not present in the database."
+                row = rows[0]
+                selected_categories = categories or ["room", "wall", "door", "window"]
+                labels = {"room": "rooms", "wall": "walls", "door": "doors", "window": "windows"}
+                values = [f"{int(row[f'candidate_{category}s'])} candidate {labels[category]}" for category in selected_categories]
+                return f"Plan {image_id}: " + ", ".join(values) + "."
+        else:
+            operation = "count_elements"
+            arguments = {"category": None}
+
+            def render_answer(rows: list[dict[str, Any]]) -> str:
+                category_totals = {category: 0 for category in (categories or ["room", "wall", "door", "window"])}
+                for row in rows:
+                    if row["category"] in category_totals:
+                        category_totals[row["category"]] += int(row["candidate_count"])
+                labels = {"room": "rooms", "wall": "walls", "door": "doors", "window": "windows"}
+                values = [f"{count} candidate {labels[category]}" for category, count in category_totals.items()]
+                return "Across all processed plans: " + ", ".join(values) + "."
+    elif "largest" in lowered and "room" in lowered:
+        operation = "largest_room"
+        arguments = {"floor_plan_id": image_id} if image_id is not None else {}
+
+        def render_answer(rows: list[dict[str, Any]]) -> str:
+            if not rows:
+                return "No candidate room regions were returned for that scope."
+            row = rows[0]
+            return (
+                f"Largest candidate room region: {row['pixel_area']} pixels in plan "
+                f"{row['floor_plan_id']} (bounding box x={row['bbox_x']}, y={row['bbox_y']}, "
+                f"width={row['bbox_width']}, height={row['bbox_height']})."
+            )
+    elif "area" in lowered and "room" in lowered:
+        operation = "sum_room_pixel_area"
+        arguments = {"floor_plan_id": image_id} if image_id is not None else {}
+
+        def render_answer(rows: list[dict[str, Any]]) -> str:
+            total = sum(int(row["total_candidate_room_pixels"]) for row in rows)
+            return f"Total candidate room area: {total} pixels. No real-world scale is available."
+    elif re.search(r"\b(where|location|located|show)\b", lowered) and categories:
+        operation = "list_elements"
+        arguments = {"floor_plan_id": image_id, "category": categories[0], "limit": 20}
+
+        def render_answer(rows: list[dict[str, Any]]) -> str:
+            if not rows:
+                return f"No candidate {categories[0]} detections were returned for that scope."
+            locations = [
+                f"{row['detection_id']}: x={row['bbox_x']}, y={row['bbox_y']}, "
+                f"width={row['bbox_width']}, height={row['bbox_height']} px"
+                for row in rows
+            ]
+            return "Candidate locations: " + "; ".join(locations) + "."
+    elif "most" in lowered and "room" in lowered:
+        operation = "most_rooms"
+        arguments = {}
+
+        def render_answer(rows: list[dict[str, Any]]) -> str:
+            if not rows:
+                return "No candidate room detections are stored."
+            leaders = ", ".join(
+                f"plan {row['floor_plan_id']} ({row['candidate_room_count']} candidates)"
+                for row in rows
+            )
+            return "Plans with the most candidate rooms: " + leaders + "."
+    elif "compare" in lowered and "room" in lowered:
+        plan_ids = [int(value) for value in re.findall(r"\b(?:plan|floor\s*plan)\s*#?\s*(\d+)\b", lowered)]
+        if len(plan_ids) >= 2:
+            operation = "compare_room_counts"
+            arguments = {"floor_plan_id_a": plan_ids[0], "floor_plan_id_b": plan_ids[1]}
+
+            def render_answer(rows: list[dict[str, Any]]) -> str:
+                return "Candidate room counts: " + ", ".join(
+                    f"plan {row['floor_plan_id']}: {row['candidate_room_count']}"
+                    for row in rows
+                ) + "."
+
+    if operation is None or render_answer is None:
+        return None
+    try:
+        result = execute_tool(operation, arguments, database_path)
+        answer = render_answer(result["rows"])
+        return {
+            "status": "answered" if result["rows"] else "refused",
+            "source": "SQLite database-first",
+            "answer": answer,
+            "tool_calls": [result],
+            "supporting_data": result["rows"],
+            "floor_plan_id": result.get("floor_plan_id", image_id),
+            "uncertainty": result.get("uncertainty") or "All returned detections are candidates with heuristic confidence.",
+            "elapsed_ms": (time.perf_counter() - started) * 1000,
+        }
+    except Exception as error:
+        return {
+            "status": "error",
+            "source": "SQLite database-first",
+            "answer": "The database query failed; no answer was inferred.",
+            "tool_calls": [],
+            "supporting_data": [],
+            "floor_plan_id": image_id,
+            "uncertainty": f"{type(error).__name__}: {error}",
+            "elapsed_ms": (time.perf_counter() - started) * 1000,
+        }
 
 
 def show_dashboard(plans: list[dict[str, Any]], counts: dict[str, int]) -> None:
@@ -169,8 +333,7 @@ def show_chat(database_path: str, plans: list[dict[str, Any]]) -> None:
         return
     ids = [int(plan["image_id"]) for plan in plans]
     selected_id = st.selectbox("Selected floor-plan context", [None, *ids], format_func=lambda value: "All plans" if value is None else str(value), key="chat_plan")
-    assistant = GeminiAssistant(database_path=database_path)
-    if assistant.api_key is None:
+    if load_api_key() is None:
         st.info("Gemini is not configured. Add GEMINI_API_KEY to the project .env file to enable live model answers. Database queries and the deterministic evaluation remain available without it.")
     st.caption("Answers must be grounded in stored candidate detections. Pixel measurements are not square metres.")
 
@@ -180,6 +343,17 @@ def show_chat(database_path: str, plans: list[dict[str, Any]]) -> None:
             st.write(message["content"])
             if message.get("result"):
                 result = message["result"]
+                if result.get("status") == "error":
+                    st.error(result.get("uncertainty") or result["answer"])
+                source = result.get("source")
+                elapsed = result.get("elapsed_ms")
+                meta = []
+                if source:
+                    meta.append(f"Source: {source}")
+                if elapsed is not None:
+                    meta.append(f"Response time: {elapsed:.0f} ms")
+                if meta:
+                    st.caption(" · ".join(meta))
                 if result.get("uncertainty"):
                     st.caption(f"Uncertainty: {result['uncertainty']}")
                 if result.get("tool_calls"):
@@ -197,7 +371,10 @@ def show_chat(database_path: str, plans: list[dict[str, Any]]) -> None:
     question = st.chat_input("Ask about candidate detections, locations, or pixel areas")
     if question:
         messages.append({"role": "user", "content": question})
-        result = assistant.ask(question, selected_id)
+        with st.spinner("Querying stored candidate detections…"):
+            result = answer_database_question(question, database_path, selected_id)
+            if result is None:
+                result = GeminiAssistant(database_path=database_path).ask(question, selected_id)
         messages.append({"role": "assistant", "content": result["answer"], "result": result})
         st.rerun()
 
